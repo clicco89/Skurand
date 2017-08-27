@@ -14,6 +14,7 @@ app.on('ready', function() {
         title: "Skurand"
     });
     mainWin.setMenu(null); //Rimuovo l'eventuale menu
+    mainWin.toggleDevTools();
     mainWin.loadURL('file://'+__dirname+'/app/main.html'); //Carico la pagina
 });
 

@@ -19,9 +19,6 @@ var estracted_nums = []; //Numeri estratti (NUMBER-MODE)
 
 let closeWindow = false; //Lascia che la finestra si chiuda
 
-var encrypter = require('object-encrypter'); //Cripta gli oggetti
-var engine = encrypter('weu89f7823hjdj23I)JA)SD123dsa°ç+àà'); //Engine di criptaggio
-
 /* EXTENSIONS */
 Array.prototype.clean = function(deleteValue) {
     for (var i = 0; i < this.length; i++) {
@@ -126,7 +123,7 @@ var saveSett = function() {
 
     document.title = 'Skurand - '+path.basename(settings_path);
 
-    fs.writeFileSync(settings_path, engine.encrypt(temp_settings)); //Scrivo le impostazioni nell'apposito file (cryptate)
+    fs.writeFileSync(settings_path, CryptoJS.AES.encrypt(JSON.stringify(temp_settings), "weu89f7823hjdj23I)JA)SD123dsa°ç+àà")); //Scrivo le impostazioni nell'apposito file (cryptate)
     settings = temp_settings;
 }
 var initSett = function() {
@@ -136,15 +133,13 @@ var initSett = function() {
 
         document.title = 'Skurand - '+path.basename(settings_path); //Imposto il titolo del documento
 
-        settings = engine.decrypt(fs.readFileSync(settings_path).toString()); //Ottengo il salvataggio e lo decrypto
-        temp_settings = engine.decrypt(fs.readFileSync(settings_path).toString());
-
+        settings = temp_settings = JSON.parse(CryptoJS.AES.decrypt(fs.readFileSync(settings_path).toString(), "weu89f7823hjdj23I)JA)SD123dsa°ç+àà").toString(CryptoJS.enc.Utf8)); //Ottengo il salvataggio e lo decrypto
+ 
     } else {
 
         document.title = 'Skurand - Nuovo';
 
-        settings = JSON.parse('{"students": []}'); //Creo un oggetto contenente le impostazioni
-        temp_settings = JSON.parse('{"students": []}');
+        settings = temp_settings = JSON.parse('{"students": []}'); //Creo un oggetto contenente le impostazioni
     }
 }
 var askSaveSett = function() {
