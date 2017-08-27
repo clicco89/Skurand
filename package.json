@@ -1,0 +1,14 @@
+{
+  "name": "skurand",
+  "version": "1.0.0",
+  "main": "./app.js",
+  "author": {
+    "name": "Matteo Guglielmetti"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "object-encrypter": "^0.1.3"
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="./styles/main.css" rel="stylesheet" type="text/css">
+        <script src="./js/main.js" type="text/javascript"></script>
+        <script src="./js/visual.js" type="text/javascript"></script> 
+    </head>
+    <body>
+        <!--Estrazione-->
+        <div id="estrazione" class="container">
+            <div id="interr-students" class="list"></div>
+            <div id="estrai-btns">
+                <div id="estrai" class="btn">ESTRAI</div>
+                <div id="indietro" class="btn"><</div>
+                <div id="cancella" class="btn">X</div>
+            </div>
+        </div>
+        <!--Pannello di controllo-->
+        <div id="pannello-di-controllo" class="container hidden">
+            <div id="pannello-header">
+                <div id="select-all"><input type="checkbox"/></div>
+                <div id="is-interr">I?</div>
+                <div id="name-header">NOME</div>
+            </div>
+            <div id="students-panel" class="list"></div>
+            <div id="pannello-btns">
+                <div id="interr-btn" class="btn">INTERROGATO</div>
+                <div id="non-interr-btn" class="btn">NON INTERROGATO</div>
+                <div id="aggiungi-btn" class="btn">AGGIUNGI</div>
+                <div id="rimuovi-btn" class="btn">RIMUOVI</div>
+            </div>
+        </div>
+        <!--Lista esclusioni-->
+        <div id="lista-esclusioni" class="container hidden">
+            <div id="students-panel-esc" class="list"></div>
+        </div>
+        <!--Number Mode-->
+        <div id="number-mode" class="container hidden">
+            <input id="max-num" type="number" placeholder="NUMERO DI STUDENTI" min="1" max="99"/>
+            <div id="number-list" class="list"></div>
+            <div id="number-btns">
+                <div id="estrai-num" class="btn">ESTRAI</div>
+                <div id="cancella-num" class="btn">X</div>
+            </div>
+        </div>
+        <!-- Menu -->
+        <div class="menu">
+            <div id="nuovo-menu-btn">NUOVO</div>
+            <div id="apri-menu-btn">APRI</div>
+            <div id="salva-menu-btn">SALVA</div>
+            <div id="salvacome-menu-btn">SALVA COME...</div><br>
+            <div id="estrazione-menu-btn">ESTRAZIONE</div>
+            <div id="panndicontrol-menu-btn">PANNELLO DI CONTROLLO</div>
+            <div id="lista-esc-menu-btn">LISTA ESCLUSIONE</div>
+            <div id="number-menu-btn">NUMBER-MODE</div>
+        </div>
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="title">
+                    <div class="title-char" style="color: forestgreen">S</div><!--  Removing whitespace
+                    --><div style="color: dodgerblue">K</div><!--
+                    --><div style="color: orangered">U</div><!--
+                    --><div style="color: goldenrod">R</div><!--
+                    --><div style="color: mediumpurple">A</div><!--
+                    --><div style="color: firebrick">N</div><!--
+                    --><div style="color: darkorange">D</div>
+                </div>
+                <div class="open-menu" style="display: inline-block">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

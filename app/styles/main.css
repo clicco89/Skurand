@@ -1,0 +1,363 @@
+body {
+    font-family: Tahoma, Geneva, sans-serif;
+    cursor: default;
+
+    /* UNSELECTABLE */ 
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* TITLE */
+.header {
+    font-size: 30px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    height: 50px;
+    background-color: white;
+    box-shadow: 0px 0px 20px #999999;
+}
+.header-content {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+.title {
+    position: absolute;
+    left: 35px;
+}
+.title div {
+    display: inline;
+}
+.open-menu {
+    position: absolute;
+    top: 7.5px;
+}
+.bar1, .bar2, .bar3 {
+    width: 25px;
+    height: 4px;
+    background-color: black;
+    margin-top: 3px;
+    transition: 0.4s; /* Transition time */
+}
+.x .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-4px, 4.5px);
+    transform: rotate(-45deg) translate(-4px, 4.5px);
+}
+.x .bar2 {
+    opacity: 0;
+}
+.x .bar3 {
+    -webkit-transform: rotate(45deg) translate(-5px, -6.5px) ;
+    transform: rotate(45deg) translate(-5px, -6.5px) ;
+}
+/* UI */
+.container {
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+}
+.list {
+    border: 1px solid #DDDDDD;
+    overflow: auto;
+}
+.btn {
+    font-size: 25px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border: 1px solid #DDDDDD;
+    transition: 0.4s;
+}
+.btn:hover {
+    background-color: black;
+    color: white;
+}
+.hidden {
+    display: none;
+}
+input {
+    outline-width: 0;
+}
+/* MENU */
+.menu {
+    position: absolute;
+    top: -100%;
+    left: 0px;
+    width: 100%;
+    height: calc(100% - 50px);
+    color: black;
+    background-color: #F8F8F8;
+    transition: 0.4s;
+}
+.opened.menu{
+    position: absolute;
+    top: 50px;
+}
+.menu div {
+    margin: 15px 15px;
+    font-size: 20px;
+}
+/* ESTRAI SCREEN / NUMBER MODE */
+#estrai-btns,
+#number-btns {
+    position: absolute;
+    top: calc(100% - 40px);
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+#estrai {
+    position: absolute;
+    top: -1px;
+    left: 0px;
+    height: 40px;
+    width: calc(100% - 80px);
+    line-height: 40px;
+}
+#indietro {
+    position: absolute;
+    top: -1px;
+    right: 40px;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+}
+#cancella,
+#cancella-num {
+    position: absolute;
+    top: -1px;
+    right: 0px;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+}
+#interr-students {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 40px;
+}
+#interr-students:empty::after {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: 'Per iniziare fare click sul tasto estrai.';
+}
+#interr-students div {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+/* PANNELLO DI CONTROLLO / LISTA ESCLUSIONI */
+#pannello-header {
+    position: absolute;
+    top: -1px;
+    left: 0px;
+    right: 0px;
+    height: 20px;
+    border: 1px solid #DDDDDD;
+    font-size: 15px;
+}
+#select-all {
+    position: absolute;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    border-right: 1px solid #EEEEEE;
+}
+#is-interr {
+    position: absolute;
+    left: 20px;
+    width: 30px;
+    height: 20px;
+    border-right: 1px solid #EEEEEE;
+    text-align: center;
+    font-style: italic;
+}
+#name-header {
+    position: absolute;
+    left: 50px;
+    right: 0px;
+    height: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+#select-all input {
+    position: absolute;
+    top: 1px;
+}
+
+#students-panel {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    left: 0px;
+    bottom: 80px;
+}
+#students-panel:empty::after {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: 'Non sono presenti studenti. Usare il tasto sottostante per aggiungerli.';
+}
+#students-panel > div ,
+#students-panel-esc > div {
+    position: relative;
+    height: 20px;
+    width: 100%;
+    border-bottom: 1px solid #EEEEEE;
+}
+.student-selector {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 20px;
+    width: 20px;
+    border-right: 1px solid #EEEEEE;
+}
+.student-selector input {
+    position: absolute;
+    top: 1px;
+}
+.student-name {
+    position: absolute;
+    top: 0px;
+    left: 50px;
+    right: 0px;
+    height: 20px;
+}
+.student-name input {
+    position: absolute;
+    top: 0px;
+    background: none;
+    border: none;
+    width: 100%;
+    height: 18px;
+    text-align: center;
+}
+.student-state {
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    height: 20px;
+    width: 30px;
+    text-align: center;
+    border-right: 1px solid #EEEEEE;
+}
+
+#pannello-btns {
+    position: absolute;
+    top: calc(100% - 80px);
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+#interr-btn {
+    position: absolute;
+    top: -1px;
+    left: 0px;
+    height: 40px;
+    width: 50%;
+    line-height: 40px;
+    font-size: 12px;
+}
+#non-interr-btn {
+    position: absolute;
+    top: -1px;
+    right: 0px;
+    height: 40px;
+    width: 50%;
+    line-height: 40px;
+    font-size: 12px;
+}
+#non-interr-btn:hover,
+#interr-btn:hover {
+    width: calc(100% - 2px);
+    font-size: 25px;
+}
+#aggiungi-btn {
+    position: absolute;
+    top: 39px;
+    left: 0px;
+    height: 40px;
+    width: 50%;
+    font-size: 20px;
+    line-height: 40px;
+}
+#rimuovi-btn {
+    position: absolute;
+    top: 39px;
+    right: 0px;
+    height: 40px;
+    width: 50%;
+    font-size: 20px;
+    line-height: 40px;
+}
+/* LISTA ESCLUSIONI */
+#students-panel-esc {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+#students-panel-esc:empty::after {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: 'Non sono presenti studenti. Spostarsi nel pannello di controllo per ulteriori informazioni.';
+}
+#students-panel-esc div .student-name {
+    position: absolute;
+    left: 20px;
+    text-align: center;
+}
+/* NUMBER MODE */
+#max-num {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 20px;
+    width: calc(100% - 2px);
+    font-size: 18px;
+    text-align: center;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+}
+#number-list {
+    position: absolute;
+    top: 23px;
+    left: 0px;
+    right: 0px;
+    bottom: 40px;
+}
+#number-list div {
+    text-align: center;
+}
+#number-list:empty::after {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: 'Per iniziare fare click sul tasto estrai.';
+}
+#estrai-num {
+    position: absolute;
+    top: -1px;
+    left: 0px;
+    height: 40px;
+    width: calc(100% - 40px);
+    line-height: 40px;
+}
