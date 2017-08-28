@@ -115,7 +115,10 @@ var saveSett = function() {
     document.title = 'Skurand - '+path.basename(settings_path);
 
     fs.writeFileSync(settings_path, CryptoJS.AES.encrypt(JSON.stringify(temp_settings), "weu89f7823hjdj23I)JA)SD123dsa°ç+àà")); //Scrivo le impostazioni nell'apposito file (cryptate)
-    settings = temp_settings;
+
+    settings = $.extend(true, {}, temp_settings); //Deep clone
+
+    return true;
 }
 var initSett = function() {
     emptyEstractedList();
@@ -182,18 +185,10 @@ var apri_menu_btn_click = function() {
 }
 var salva_menu_btn_click = saveSett;
 var salvacome_menu_btn_click = function() {
-    var temp_path = dialog.showSaveDialog(remote.getCurrentWindow(), {
-        title: 'Skurand - Salva come...',
-        defaultPath: app_path,
-        filters: [{name: 'Interrogazione', extensions: ['skur']}]
-    });
-    if(temp_path !== undefined) {
+    temp_path = settings_path;
+    settings_path = "";
 
-        document.title = 'Skurand - '+path.basename(settings_path);
-
-        settings_path = temp_path;
-        saveSett();
-    }
+    if(!saveSett()) settings_path = temp_path;
 }
 var estrazione_menu_btn_click = function() {
     $('#estrazione').removeClass('hidden');
