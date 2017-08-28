@@ -48,15 +48,6 @@ var getUninterr = function() { //Ottiene gli studenti non interrogati e il loro 
 
     return result;
 }
-var toggleMenu = function() {
-    $('.open-menu').toggleClass('x'); //Cambio il tasto
-    //Apre o chiude il menu
-    if($('.menu').hasClass('opened')) {
-        $('.menu').removeClass('opened');
-    } else {
-        $('.menu').addClass('opened');
-    }
-}
 var emptyEstractedList = function() { //Svuota la lista studenti
     $('#interr-students').empty();
     interr_history = [];
@@ -130,16 +121,15 @@ var initSett = function() {
     emptyEstractedList();
 
     if(settings_path != "") {
-
         document.title = 'Skurand - '+path.basename(settings_path); //Imposto il titolo del documento
 
-        settings = temp_settings = JSON.parse(CryptoJS.AES.decrypt(fs.readFileSync(settings_path).toString(), "weu89f7823hjdj23I)JA)SD123dsa°ç+àà").toString(CryptoJS.enc.Utf8)); //Ottengo il salvataggio e lo decrypto
- 
+        settings = JSON.parse(CryptoJS.AES.decrypt(fs.readFileSync(settings_path).toString(), "weu89f7823hjdj23I)JA)SD123dsa°ç+àà").toString(CryptoJS.enc.Utf8)); //Ottengo il salvataggio e lo decrypto
+        temp_settings = $.extend(true, {}, settings); //Deep clone
     } else {
-
         document.title = 'Skurand - Nuovo';
-
-        settings = temp_settings = JSON.parse('{"students": []}'); //Creo un oggetto contenente le impostazioni
+        
+        settings = JSON.parse('{"students": []}'); //Creo un oggetto contenente le impostazioni
+        temp_settings = $.extend(true, {}, settings); //Deep clone
     }
 }
 var askSaveSett = function() {
@@ -158,8 +148,6 @@ var askSaveSett = function() {
 
 /* EVENT HANDLER */
 /* MENU */
-var open_menu_click = toggleMenu;
-var menu_btn_click = toggleMenu;
 var nuovo_menu_btn_click = function() {
     if(askSaveSett() !== false) {
         settings_path = "";
@@ -403,8 +391,6 @@ var main = function() {
 
     /* Set event handler */
     //Menu
-    $('.open-menu').click(open_menu_click);
-    $('.menu div').click(menu_btn_click);
     $('#nuovo-menu-btn').click(nuovo_menu_btn_click);
     $('#apri-menu-btn').click(apri_menu_btn_click);
     $('#salva-menu-btn').click(salva_menu_btn_click);
@@ -437,7 +423,7 @@ window.$ = window.jQuery = require('./js/jquery.min.js'); //Load jQuery
 $(document).ready(main);
 
 //Close handler
-window.addEventListener('beforeunload', function(evt) {
+window.addEventListener('beforeunload', function(evt) { //Soluzione ad un bug di electron, che permette di essere sicuri che il programma visualizzi il prompt di salvataggio all'utente
 
     if (closeWindow) return;
 
